@@ -130,9 +130,13 @@ export default function LoginPage() {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        {isSubmitting ? "Logging in..." : "Login"}
+                        {isSubmitting ? (
+                            <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
+                        ) : (
+                            "Login"
+                        )}
                     </button>
                     <div className="mt-5 text-center text-sm">
                         Not a user?{" "}

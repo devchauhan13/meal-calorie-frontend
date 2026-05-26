@@ -21,8 +21,8 @@ export default function HomePage() {
 
 
   return (
-    <main>
-      <p>Checking session...</p>
+    <main className="flex min-h-screen items-center justify-center">
+      <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-300 border-t-slate-900"></div>
     </main>
   )
 }

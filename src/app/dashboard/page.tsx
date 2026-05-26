@@ -11,7 +11,9 @@ export default function DashboardPage() {
     if (!isHydrated) {
         return (
             <main>
-                <p>Loading...</p>
+                <div className="flex min-h-screen items-center justify-center">
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-300 border-t-slate-900"></div>
+                </div>
             </main>
         );
     }

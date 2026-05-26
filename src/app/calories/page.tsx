@@ -97,7 +97,9 @@ export default function CaloriesPage() {
     if (!isHydrated) {
         return (
             <main>
-                <p>Loading...</p>
+                <div className="flex min-h-screen items-center justify-center">
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-300 border-t-slate-900"></div>
+                </div>
             </main>
         );
     }
@@ -125,12 +127,18 @@ export default function CaloriesPage() {
 
                         {apiError && <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{apiError}</p>}
 
-                        <button type="submit" disabled={isSubmitting || retryCountdown !== null} className="w-full rounded-xl bg-slate-900 px-5 py-3 font-medium text-white transition duration-200 hover:bg-slate-700 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50">
-                            {retryCountdown
-                                ? `Try again in ${retryCountdown}s`
-                                : isSubmitting
-                                    ? "Calculating..."
-                                    : "Get Calories"}
+                        <button
+                            type="submit"
+                            disabled={isSubmitting || retryCountdown !== null}
+                            className="flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 font-medium text-white transition duration-200 hover:bg-slate-700 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            {retryCountdown ? (
+                                `Try again in ${retryCountdown}s`
+                            ) : isSubmitting ? (
+                                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
+                            ) : (
+                                "Get Calories"
+                            )}
                         </button>
                     </form>
                 </div>
@@ -249,7 +257,12 @@ export default function CaloriesPage() {
                             </div>
                         </div>
                     ) : (
-                        <p>No result yet</p>
+                        <div className="rounded-2xl border border-dashed border-slate-300 p-10 text-center">
+                            <p className="text-lg font-semibold">No result yet</p>
+                            <p className="mt-2 text-sm text-slate-500">
+                                Search for a dish above to see calories and macronutrients.
+                            </p>
+                        </div>
                     )}
                 </section>
             </div>
